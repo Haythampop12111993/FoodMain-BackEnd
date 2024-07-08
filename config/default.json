@@ -1,0 +1,13 @@
+{
+  "mongoConnectionString": "mongodb+srv://haythampop50:Admin33105854@cluster0.gs3rojo.mongodb.net/FoodApp?retryWrites=true&w=majority&appName=Cluster0",
+  "tokenKey": "HaythamAliKey",
+  "cloudinary": {
+    "cloud_name": "dxldzlklo",
+    "api_key": "236938614319945",
+    "api_secret": "qGjfkaDKZfBiZnLxI3A-nUJfWF8"
+  },
+  "client_id": "AW3P829sX04mfke4oPohkkmfdYlVq1a0GmIiav1BMR39g1G5bjwPBVCo2w1hO8dX8LEMcnT3yP9Tsdos",
+  "client_secret": "EOpzprbpLzDuI6fhBptgqC9qQjeIAZF3THmd9YOBjkCUOLA35v2KtAphwxsavsUYI4kClKv4ngZMWfJg",
+  "Paypal_Url": "https://api-m.sandbox.paypal.com",
+  "stripe_Key": "sk_test_51PYlZGJ5UxRoFj40NItoHz7ZqfoT9auvY2qRFqYkEYmF8AgEJdMp4n48g8spdBE7jTREYdmb2Nc6PMOX7LbSeR8Y00tktYYUby"
+}

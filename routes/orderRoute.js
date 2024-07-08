@@ -1,0 +1,10 @@
+const orderRoute = require("express").Router();
+const orderController = require("../controllers/orderController");
+const { userAuth } = require("../middleware/middleware");
+orderRoute.post("/create", userAuth, orderController.createOrder);
+orderRoute.get("/getOrder", userAuth, orderController.getOrder);
+orderRoute.post("/pay", userAuth, orderController.pay);
+// orderRoute.post("/createPayment", userAuth, orderController.createPayment);
+// orderRoute.post("/createPayment", userAuth, orderController.createPaypalOrder);
+orderRoute.get("/track/:id", userAuth, orderController.trackOrder);
+module.exports = orderRoute;
