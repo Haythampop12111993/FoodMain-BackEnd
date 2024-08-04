@@ -16,5 +16,26 @@ foodRoute.get("/foodDetails/:_id", FoodController.foodDetails);
 foodRoute.get("/foodByTag/:tag", FoodController.foodByTag);
 foodRoute.get("/searchFood", FoodController.searchFood);
 foodRoute.get("/searchFoodWithTag/:tag", FoodController.searchFoodWithTag);
+foodRoute.get(
+  "/showAllFood",
+  userAuth,
+  adminAuth,
+  FoodController.ShowFoodInDashboard
+);
+
+// foodRoute.delete("/deleteFood/:_id", userAuth, adminAuth, FoodController.deleteFood);
+
+foodRoute.patch(
+  "/updateFood/:foodId",
+  userAuth,
+  adminAuth,
+  FoodController.editFood
+);
+foodRoute.delete(
+  "/deleteFood/:foodId",
+  userAuth,
+  adminAuth,
+  FoodController.deleteFood
+);
 
 module.exports = foodRoute;

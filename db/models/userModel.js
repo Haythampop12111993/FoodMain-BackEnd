@@ -76,7 +76,7 @@ const userSchema = mongoose.Schema(
 
     image: {
       type: String,
-      default: "assets/default-User-Img.png",
+      default: "assets/default-user-img.png",
       trim: true,
       lowercase: true,
     },
@@ -86,6 +86,11 @@ const userSchema = mongoose.Schema(
       trim: true,
       lowercase: true,
       enum: ["male", "female"],
+    },
+    isBlocked: {
+      type: Boolean,
+      required: true,
+      default: false,
     },
     tokens: [
       {

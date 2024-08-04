@@ -10,7 +10,7 @@ const userAuth = async (req, res, next) => {
     token = req.header("Authorization").replace("Bearer ", "");
     const decoded = jwt.verify(token, config.get("tokenKey"));
     const _id = decoded._id;
-    const userData = await userModel.findById({
+    const userData = await userModel.findOne({
       _id: _id,
       "tokens.token": token,
     });

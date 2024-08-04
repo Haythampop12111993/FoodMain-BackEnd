@@ -25,7 +25,8 @@ class Food {
       });
       console.log(food);
       await food.save();
-      resGenerator(res, 200, true, food, "Food added successfully");
+      const allFood = await foodModel.find();
+      resGenerator(res, 200, true, allFood, "Food added successfully");
     } catch (e) {
       resGenerator(res, 500, false, null, e.message);
     }
@@ -187,6 +188,50 @@ class Food {
         { totalPages, food },
         "Food fetched successfully"
       );
+    } catch (e) {
+      resGenerator(res, 500, false, null, e.message);
+    }
+  };
+  static ShowFoodInDashboard = async (req, res) => {
+    try {
+      const food = await foodModel.find();
+      if (food.length === 0) {
+        throw new Error(
+          "No food found. Please add food to display in dashboard"
+        );
+      }
+      resGenerator(res, 200, true, { food }, "Food fetched successfully");
+    } catch (e) {
+      resGenerator(res, 500, false, null, e.message);
+    }
+  };
+  static editFood = async (req, res) => {
+    try {
+      if (req.body.foodImage) {
+        delete req.body.foodImage;
+      }
+      const foodData = await foodModel.findById({ _id: req.params.foodId });
+      if (!foodData) {
+        throw new Error("Food not found");
+      }
+      const food = await foodModel.findByIdAndUpdate(
+        { _id: req.params.foodId },
+        req.body,
+        { new: true }
+      );
+      const allFoods = await foodModel.find();
+      resGenerator(res, 200, true, allFoods, "Food updated successfully");
+    } catch (e) {
+      resGenerator(res, 500, false, null, e.message);
+    }
+  };
+  static deleteFood = async (req, res) => {
+    try {
+      const food = await foodModel.findById({ _id: req.params.foodId });
+      if (!food) throw new Error("Food not found.");
+      await foodModel.findByIdAndDelete({ _id: req.params.foodId });
+      const allFoods = await foodModel.find();
+      resGenerator(res, 200, true, allFoods, "Food deleted successfully");
     } catch (e) {
       resGenerator(res, 500, false, null, e.message);
     }
