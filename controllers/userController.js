@@ -141,17 +141,14 @@ class UserController {
           resGenerator(res, 200, true, allUsers, "User deleted");
         }
       }
-      // const deleteUser = await userModel.findByIdAndDelete({
-      //   _id: req.params.userId,
-      // });
-
-      // if (!deleteUser) throw new Error("User not found");
-      // const allUsers = await userModel.find();
-      // resGenerator(res, 200, true, allUsers, "User deleted");
-    } catch (e) {
+      
+    }
+    catch (e) {
       resGenerator(res, 500, false, null, e.message);
     }
-  };
+
+  }
+  ;
   static blockUser = async (req, res) => {
     try {
       const userData = await userModel.findById({ _id: req.params.userId });
